@@ -1,0 +1,10 @@
+import sys
+from tkinter import *
+
+print("hi")
+
+mGui = Tk()
+
+mGui.geometry('450x450')
+
+mGui.mainloop()
