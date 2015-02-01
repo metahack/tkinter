@@ -45,17 +45,11 @@ mGuiMain = Tk()
 
 #values for "checkmate" flag demo
 
-
-
-
-
 checkmate_text = StringVar()
 checkmate_text.initialize("")
 checkmate = BooleanVar(mGuiMain)
-#checkmate.initialize(True)
+checkmate.initialize(True)
 checkmate.trace("w", set_checkmate_text)
-#checkmate.trace(mode="w", callback=noop)
-#checkmate.set(False)
 set_checkmate_text()
 
 
@@ -142,8 +136,23 @@ mLabelGrid5_7 = Label(mGuiGrid2, text="2-1", bg='light slate grey').grid(row=2, 
 
 
 
+# "Radio" window (radio buttons)
 
+radioVal = IntVar()
+#radioVal.initialize(1)
+mGuiRadio = Tk()
+mGuiRadio.title("Radio Buttons")
+mGuiRadio.geometry('+700+100')
 
+radioLabel = Label(text="choices")
+radioLabel.pack()
+rb1 = Radiobutton(mGuiRadio, text="one", variable=radioVal, value=1)
+rb1.pack()
+
+rb2 = Radiobutton(mGuiRadio, text="two", variable=radioVal, value=2)
+rb2.pack()
+rb3 = Radiobutton(mGuiRadio, text="three", variable=radioVal, value=3)
+rb3.pack()
 
 
 
