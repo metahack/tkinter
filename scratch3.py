@@ -31,6 +31,12 @@ def checkmate_flip():
     else:
         checkmate.set(True)
 
+def update_from_radio():
+
+    orderString.set("you ordered {} with {}.".format(radioValMeat.get(), radioValSauce.get()))
+    messagebox.showinfo(message="hi")
+    
+
 def noop():
     pass
         
@@ -139,22 +145,39 @@ mLabelGrid5_7 = Label(mGuiGrid2, text="2-1", bg='light slate grey').grid(row=2, 
 # "Radio" window (radio buttons)
 
 radioVal = IntVar()
-#radioVal.initialize(1)
+radioValMeat = StringVar()
+radioValSauce = StringVar()
+radioVal.initialize(1)
 mGuiRadio = Tk()
 mGuiRadio.title("Radio Buttons")
-mGuiRadio.geometry('+700+100')
+mGuiRadio.geometry('100x200+700+100')
 
-radioLabel = Label(text="choices")
-radioLabel.pack()
-rb1 = Radiobutton(mGuiRadio, text="one", variable=radioVal, value=1)
-rb1.pack()
+radioLabelMeat = Label(mGuiRadio, text="meat choices")
+radioLabelMeat.pack()
 
-rb2 = Radiobutton(mGuiRadio, text="two", variable=radioVal, value=2)
-rb2.pack()
-rb3 = Radiobutton(mGuiRadio, text="three", variable=radioVal, value=3)
-rb3.pack()
+rbMeat1 = Radiobutton(mGuiRadio, text="chicken", variable=radioValMeat, command = update_from_radio, value="chicken")
+rbMeat1.pack()
+rbMeat2 = Radiobutton(mGuiRadio, text="beef", variable=radioValMeat,command = update_from_radio, value="beef")
+rbMeat2.pack()
+rbMeat3 = Radiobutton(mGuiRadio, text="pork", variable=radioValMeat, command = update_from_radio, value="pork")
+rbMeat3.pack()
 
+radioLabelSauce = Label(mGuiRadio, text="sauce choices")
+radioLabelSauce.pack()
 
+rbSauce1 = Radiobutton(mGuiRadio, text="red sauce", variable=radioValSauce, command = update_from_radio, value="red sauce")
+rbSauce1.pack()
+rbSauce2 = Radiobutton(mGuiRadio, text="two", variable=radioValSauce, command = update_from_radio, value="green sauce")
+rbSauce2.pack()
+rbSauce3 = Radiobutton(mGuiRadio, text="three", variable=radioValSauce, command = update_from_radio, value="enchilada sauce")
+rbSauce3.pack()
+
+orderString = StringVar()
+orderString.set("your order...")
+update_from_radio()
+radioLabelOrder = Label(mGuiRadio, textvariable=orderString.get())
+radioLabelOrder.pack()
+update_from_radio()
 
 
 
