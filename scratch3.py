@@ -4,7 +4,7 @@ from tkinter import *
 
 # function definitions START
 
-# functions supplied as callbacks for traces are passed arguments and must take them
+# functions supplied as callbacks for traces are passed arguments and must take them (*args)
 def set_checkmate_text(*args):
     if checkmate.get():
         checkmate_text.set("Checkmate ON")
@@ -34,7 +34,6 @@ def checkmate_flip():
 def update_from_radio():
 
     orderString.set("you ordered {} with {}.".format(radioValMeat.get(), radioValSauce.get()))
-    messagebox.showinfo(message="hi")
     
 
 def noop():
@@ -112,9 +111,9 @@ entry.pack()
 Button(mGuiMain, text="quit", command = quit).place(x=400, y=20)
 
 
-# "Button" window
+# "Button" window`
 
-mGuiButton = Tk()
+mGuiButton = Toplevel()
 mGuiButton.geometry('200x100+100+100')
 mGuiButton.title("Button")
 mLabel3 = Label(mGuiButton, text=ment.get())
@@ -124,7 +123,7 @@ mButton.pack()
 
 
 # "Grid" window
-mGuiGrid2 = Tk()
+mGuiGrid2 = Toplevel()
 # note: no default size means grid dimensions determine window size
 mGuiGrid2.geometry('+1000+100')
 mGuiGrid2.title("Grid")
@@ -148,9 +147,9 @@ radioVal = IntVar()
 radioValMeat = StringVar()
 radioValSauce = StringVar()
 radioVal.initialize(1)
-mGuiRadio = Tk()
+mGuiRadio = Toplevel()
 mGuiRadio.title("Radio Buttons")
-mGuiRadio.geometry('100x200+700+100')
+mGuiRadio.geometry('300x200+700+100')
 
 radioLabelMeat = Label(mGuiRadio, text="meat choices")
 radioLabelMeat.pack()
@@ -167,15 +166,15 @@ radioLabelSauce.pack()
 
 rbSauce1 = Radiobutton(mGuiRadio, text="red sauce", variable=radioValSauce, command = update_from_radio, value="red sauce")
 rbSauce1.pack()
-rbSauce2 = Radiobutton(mGuiRadio, text="two", variable=radioValSauce, command = update_from_radio, value="green sauce")
+rbSauce2 = Radiobutton(mGuiRadio, text="green sauce", variable=radioValSauce, command = update_from_radio, value="green sauce")
 rbSauce2.pack()
-rbSauce3 = Radiobutton(mGuiRadio, text="three", variable=radioValSauce, command = update_from_radio, value="enchilada sauce")
+rbSauce3 = Radiobutton(mGuiRadio, text="enchilada sauce", variable=radioValSauce, command = update_from_radio, value="enchilada sauce")
 rbSauce3.pack()
 
 orderString = StringVar()
 orderString.set("your order...")
-update_from_radio()
-radioLabelOrder = Label(mGuiRadio, textvariable=orderString.get())
+#update_from_radio()
+radioLabelOrder = Label(mGuiRadio, textvariable=orderString)
 radioLabelOrder.pack()
 update_from_radio()
 
