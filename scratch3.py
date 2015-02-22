@@ -97,6 +97,8 @@ mLabel2.place(x=225,y=100)
 mButton2 = Button(mGuiMain, text="click here", command = mHello)
 mButton2.pack()
 
+spinner = Spinbox(mGuiMain, from_=0, to=9).pack()
+
 # "Checkmate" checkbox and button system
 mLabelCheckmate = Label(textvariable = checkmate_text)
 mLabelCheckmate.place(x=200, y=400)
